@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<package name="log" namespace="/" extends="struts-default">
+		<action name="login" class="ypjc.structs.action.LoginAction">
+			<result name="fail">/login.jsp</result>
+			
+			<result name="success1">/xiangmufenpei.jsp</result>
+			<result name="success2">/yangpinfenpei.jsp</result>
+			<result name="success3">/shengchengyuanshijilu.jsp</result></action>
+		<action name="logout" class="ypjc.structs.action.LogoutAction">
+			<result name="success">/login.jsp</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="log" location="295,220" size="385,315">
+    <action name="login" location="170,61" size="150,104">
+      <result name="fail">
+        <resourceEdge source="fail" routing="0" target="login.jsp" />
+      </result>
+      <result name="success1">
+        <resourceEdge source="success1" routing="0" target="xiangmufenpei.jsp" />
+      </result>
+      <result name="success2">
+        <resourceEdge source="success2" routing="0" target="yangpinfenpei.jsp" />
+      </result>
+      <result name="success3">
+        <resourceEdge source="success3" routing="0" target="shengchengyuanshijilu.jsp" />
+      </result>
+    </action>
+    <action name="logout" location="170,232" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="login.jsp" />
+      </result>
+    </action>
+  </package>
+  <webResource name="login.jsp" path="/login.jsp" location="10,437" size="150,55" />
+  <webResource name="xiangmufenpei.jsp" path="/xiangmufenpei.jsp" location="123,275" size="150,55" />
+  <webResource name="yangpinfenpei.jsp" path="/yangpinfenpei.jsp" location="264,65" size="150,55" />
+  <webResource name="shengchengyuanshijilu.jsp" path="/shengchengyuanshijilu.jsp" location="451,65" size="150,55" />
+</Struts2Diagram>
+
