@@ -6,8 +6,7 @@ body,td,th, tr {
 	top: 3px;
     right: auto;
 	bottom: 3px;
-	
-	text-align:center;
+	text-align:center; 
 }
 
  .container {
@@ -27,4 +26,13 @@ body,td,th, tr {
 	text-align:center;
     margin-left:300px;
 }
+
+#tdLeft{
+    text-align:left; 
+}
+
+.tdRight{
+    text-align:right; 
+}
+
 	

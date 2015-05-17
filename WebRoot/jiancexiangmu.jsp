@@ -35,19 +35,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               data: data,
               success: function(jsonObject){
                  var s = "<table border='1'>";
-                 s += "<tr><td width='150'><font size='4'>检验内容ID</font></td><td width='350'><font size='4'>检验内容</font></td></tr>";
+                 s += "<tr><td width='155' class=\"tdRight\"><input id=\"checkAll\" type=\"checkbox\" value=\"checkAll\"><font size='1px'>全选（取消）</font></td><td width='350' align=\"left\"><font size='4'>检验内容</font></td></tr>";
                    $.each(jsonObject,function(key,value){//element是data.emp json数组之中的数据  
                     if(count%2 == 0){
                         s+="<tr>";
-                        s += "<td> <input name=\"001\" type=\"checkbox\" value="+value+">"+"<font size='4'>"+value+"</font>"+"</td>";
+                        s += "<td align=\"left\"> <input name=\"001\" type=\"checkbox\" align=\"left\" value="+value+">"+"<font size='4'>"+value+"</font>"+"</td>";
                      }
                      else{
-                         s += "<td>"+"<font size='4'>"+value+"</font>"+"</td>";
+                         s += "<td align=\"left\">"+"<font size='4'>"+value+"</font>"+"</td>";
                      }
                     count++;
                    });  
                    s += "</table>";
-                   $("#result").html(s);    
+                   $("#result").html(s);  
+                   
+                   $("#checkAll").click(function() { //复选框全选/取消全选 
+                       if (this.checked) {  
+                           $("input[name='001']:checkbox").each(function() { //遍历所有的name为selectFlag的 checkbox  
+                                       $(this).attr("checked", true);  
+                                   })  
+                       } else {   //反之 取消全选   
+                           $("input[name='001']:checkbox").each(function() { //遍历所有的name为selectFlag的 checkbox  
+                                       $(this).attr("checked", false);  
+                                       //alert("f");  
+                                   })  
+                       }  
+                   })  
               },
               complete:function(){
               },
@@ -65,7 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           
             var t = $(":checkbox[name='001']:checked").map(function(){return $(this).val(); }).get();
             var data = {"no":tmp3[1],"t":t};
-             alert(JSON.stringify(data));  
+            /*  alert(JSON.stringify(data));   */
             $.ajax({
               dataType:"json",
               type: "POST",
@@ -75,7 +88,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   /* var s = "<table border='1' width='500' height='100'>"; */
                  /*  alert(jsonObject.status); */
                   if(jsonObject.status == "success"){
-                      alert(jsonObject.status); 
+                      alert("保存成功!"); 
                   }
                   if(jsonObject.status == "fail"){
                       alert(jsonObject.status); 

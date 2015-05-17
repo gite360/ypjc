@@ -24,7 +24,7 @@ public class getall extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		System.out.println("getall");
+		System.out.println("getall()");
 		//response.setContentType("text/html");
 		/*JSONObject jsonObject = new JSONObject();
 		jsonObject.put("检测内容0", "乙醇");
