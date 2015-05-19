@@ -35,8 +35,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               data: data,
               success: function(jsonObject){
                  var s = "<table border='1'>";
-                 s += "<tr><td width='155' class=\"tdRight\"><input id=\"checkAll\" type=\"checkbox\" value=\"checkAll\"><font size='1px'>全选（取消）</font></td><td width='350' align=\"left\"><font size='4'>检验内容</font></td></tr>";
-                   $.each(jsonObject,function(key,value){//element是data.emp json数组之中的数据  
+                 s += "<tr><td width='155' class=\"tdRight\"><input id=\"checkAll\" type=\"checkbox\" value=\"checkAll\"><font size='1px'>全选（取消）</font></td><td width='350' align=\"left\"><font size='4'>检验内容</font></td></tr>"; 
+                 
+                 $.each(jsonObject,function(key,value){//element是data.emp json数组之中的数据  
                     if(count%2 == 0){
                         s+="<tr>";
                         s += "<td align=\"left\"> <input name=\"001\" type=\"checkbox\" align=\"left\" value="+value+">"+"<font size='4'>"+value+"</font>"+"</td>";
@@ -46,13 +47,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                      }
                     count++;
                    });  
-                   s += "</table>";
+                   s += "</table>"; 
                    $("#result").html(s);  
                    
                    $("#checkAll").click(function() { //复选框全选/取消全选 
+                	   /* alert(this.checked); */
                        if (this.checked) {  
+                    	   /* alert("0"); */
                            $("input[name='001']:checkbox").each(function() { //遍历所有的name为selectFlag的 checkbox  
-                                       $(this).attr("checked", true);  
+                        	           /* alert("1"); */
+                        	           /* $(this).attr("checked", true); */
+                        	           $(this).prop("checked",true);
                                    })  
                        } else {   //反之 取消全选   
                            $("input[name='001']:checkbox").each(function() { //遍历所有的name为selectFlag的 checkbox  
@@ -60,8 +65,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                        //alert("f");  
                                    })  
                        }  
-                   })  
+                   })   
               },
+              
               complete:function(){
               },
               global:true,
@@ -74,11 +80,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       
       
       $(document).ready(function(){
+    	  
+    	  
+    	 /*  $("#checkAll").click(function() { //复选框全选/取消全选 
+              if (this.checked) {  
+                  $("input[name='001']:checkbox").each(function() { //遍历所有的name为selectFlag的 checkbox  
+                              $(this).attr("checked", true);  
+                          })  
+              } else {   //反之 取消全选   
+                  $("input[name='001']:checkbox").each(function() { //遍历所有的name为selectFlag的 checkbox  
+                              $(this).attr("checked", false);  
+                              //alert("f");  
+                          })  
+              }  
+          }) */
+    	  
+    	  
+    	  
+    	  
           $("button").click(function(){
           
             var t = $(":checkbox[name='001']:checked").map(function(){return $(this).val(); }).get();
             var data = {"no":tmp3[1],"t":t};
-            /*  alert(JSON.stringify(data));   */
+            /* alert(JSON.stringify(data)); */  
             $.ajax({
               dataType:"json",
               type: "POST",
@@ -139,7 +163,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
     <hr>
     <br>
-  	<div id="result" align="center"></div>
+        <!-- <table border='1'>
+            <tr><td width='155' class="tdRight"><input id="checkAll" type="checkbox" value="checkAll"><font size='1px'>全选（取消）</font></td><td width='350' align="left"><font size='4'>检验内容</font></td></tr> -->
+            <tr><div id="result" align="center"></div><tr>
+       <!--  </table> -->
+    
+    
+  	
     </div>
 </body>
 </html>

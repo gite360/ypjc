@@ -6,7 +6,7 @@
 		<action name="login" class="ypjc.structs.action.LoginAction">
 			<result name="fail">/login.jsp</result>
 			
-			<result name="success1">/xiangmufenpei.jsp</result>
+			<result name="success1">/showAllSpecimen0.jsp</result>
 			<result name="success2">/yangpinfenpei.jsp</result>
 			<result name="success3">/shengchengyuanshijilu.jsp</result></action>
 		<action name="logout" class="ypjc.structs.action.LogoutAction">

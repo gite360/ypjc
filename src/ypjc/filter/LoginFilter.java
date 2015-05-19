@@ -32,7 +32,7 @@ public class LoginFilter implements Filter {
     		chain.doFilter(request, response);
     		//�ǵ�½������δ��½
     	} else if (session.getAttribute("username") != null && session.getAttribute("permission").equals(1)){
-    		if("/xiangmufenpei.jsp".equals(subUrl) || "/jiancexiangmu.jsp".equals(subUrl))
+    		if("/showAllSpecimen0.jsp".equals(subUrl) || "/selectItems0.jsp".equals(subUrl))
     			chain.doFilter(request, response);
     		else {
     			((HttpServletResponse)response).sendRedirect(redirectUrl);

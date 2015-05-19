@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>项目分配</title>
+    <title>检测项目分配</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -85,7 +85,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <hr>
 <div align="center">
 <br>
-   	<font size="6">项目分配</font>
+   	<font size="6">检测项目分配</font>
     <br>
   </div>
   <hr>

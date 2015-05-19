@@ -1,6 +1,6 @@
 @CHARSET "UTF-8";
 
-body,td,th, tr {
+body,td,th,tr {
     font-size: 18px;
 	left: auto;
 	top: 3px;
@@ -33,6 +33,10 @@ body,td,th, tr {
 
 .tdRight{
     text-align:right; 
+}
+
+table{
+	margin:0px auto;
 }
 
 	
