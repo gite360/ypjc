@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       var temp;
       var data = {"no":tmp2[1]};
       var count = 0;
-      var href =  "shezhitiaomujutixinxi2.jsp?"+tmp1+"&";
+      var href =  "setSpecificWeightInfo1.jsp?"+tmp1+"&";
       function biaozhunxiangmu2(){
          alert(JSON.stringify(data));
          $.ajax({

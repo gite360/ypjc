@@ -20,16 +20,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css" />
 	
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.1.3.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/showGetTask1.js"></script>
     <script type="text/javascript">
         
-        $(document).ready(function(){
-          $("button").click(function(){
-            /* var t = $(":text[name='标准名称']").map(function(){return $(this).val(); }).get(); */
-            /* var t = $(":text[name='标准名称']").val(); */ 
+        /* $(document).ready(function(){
             var t = $("#日期").val();
             var data = {"date":t};
             var count = 0;
-             /* alert(JSON.stringify(data));  */
+             
             $.ajax({
               dataType:"json",
               type: "POST",
@@ -38,17 +36,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               success: function(jsonObject){
                  var s = "<table border='1'  height='100'>";
                  s += "<tr><td width='150'><font size='4'>样品编号</font></td><td width='350'><font size='4'>样品名称</font></td><td width='100'><font size='4'>标准编号</font></td><td width='100'><font size='4'>样品数量</font></td></tr>";
-                  /* for(i = ) */
                    $.each(jsonObject,function(key,value){//element是data.emp json数组之中的数据  
-                    /* alert(i); */
-                   
                      if(count%4 == 0){
                         s+="<tr>";
                         s += "<td>"+"<a href=\"jiancexiangmu2.jsp?no="+value+"\">"+"<font size='4'>"+value+"</font>"+"</td>";
                      }
-                    /*  else if(count%4 == 2){
-                         s += "<td>"+"<a href=\"biaozhunxiangmu.jsp?"+value+ "\">"+value+"</td>";
-                     } */
                      else{
                          s += "<td>"+"<font size='4'>"+value+"</font>"+"</td>";
                      }   
@@ -63,8 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               },
               global:true,
             });
-         });
-        });
+        }); */
    </script>
   </head>
   

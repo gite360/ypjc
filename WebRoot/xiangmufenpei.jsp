@@ -21,13 +21,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css" />
 	
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.1.3.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/showGetTask0.js"></script>
     <script type="text/javascript">
         
-        $(document).ready(function(){
+        /* $(document).ready(function(){
             /* var t = $("#endtime").val(); */
             /* var data = {"date":t}; */
             
-            var data = null; 
+           /*  var data = null; 
             var count = 0;
             var temp;
             $.ajax({
@@ -67,7 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               global:true,
             });
          /* }); */
-        });
+       /*  }); */ 
    </script>
   </head>
   

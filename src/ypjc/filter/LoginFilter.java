@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;  
 import javax.servlet.http.HttpSession;  
 /** 
- * µÇÂ½filter
+ * ï¿½ï¿½Â½filter
  *  
  *  
  */  
@@ -21,16 +21,16 @@ public class LoginFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {  
     	HttpSession session = ((HttpServletRequest) request).getSession();
     	String username;
-    	//TODO »ñÈ¡sessionÖÐÐÅÏ¢
+    	//TODO ï¿½ï¿½È¡sessionï¿½ï¿½ï¿½ï¿½Ï¢
     	//userName = session.getAttribute("username").toString();
     	String url = ((HttpServletRequest) request).getRequestURI();
     	String subUrl = url.substring(url.lastIndexOf('/'));
     	String redirectUrl = url.substring(0, url.lastIndexOf('/')) + "/login.jsp";
-    	//Èç¹ûÊÇµÇÂ¼¾Í·ÅÐÐ
+    	//ï¿½ï¿½ï¿½ï¿½Çµï¿½Â¼ï¿½Í·ï¿½ï¿½ï¿½
     	if ("/login.jsp".equals(subUrl)){
-    		// ·ÅÐÐ
+    		// ï¿½ï¿½ï¿½ï¿½
     		chain.doFilter(request, response);
-    		//·ÇµÇÂ½½çÃæÇÒÎ´µÇÂ½
+    		//ï¿½Çµï¿½Â½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½Â½
     	} else if (session.getAttribute("username") != null && session.getAttribute("permission").equals(1)){
     		if("/xiangmufenpei.jsp".equals(subUrl) || "/jiancexiangmu.jsp".equals(subUrl))
     			chain.doFilter(request, response);
@@ -38,7 +38,7 @@ public class LoginFilter implements Filter {
     			((HttpServletResponse)response).sendRedirect(redirectUrl);
 			}
     	} else if (session.getAttribute("username") != null && session.getAttribute("permission").equals(2)) {
-    		if("/yangpinfenpei.jsp".equals(subUrl) || "/jiancexiangmu2.jsp".equals(subUrl) || "/shezhitiaomujutixinxi2.jsp".equals(subUrl))
+    		if("/yangpinfenpei.jsp".equals(subUrl) || "/selectedItems1.jsp".equals(subUrl) || "/setSpecificWeightInfo1.jsp".equals(subUrl))
     			chain.doFilter(request, response);
     		else {
     			((HttpServletResponse)response).sendRedirect(redirectUrl);
@@ -51,7 +51,7 @@ public class LoginFilter implements Filter {
 			}
 		} 
     	else if (session.getAttribute("username") == null) {
-    		// ÖØ¶¨Ïòµ½µÇÂ¼½çÃæ£¬»òÌáÊ¾Ã»ÓÐÈ¨ÏÞ  
+    		// ï¿½Ø¶ï¿½ï¿½òµ½µï¿½Â¼ï¿½ï¿½ï¿½æ£¬ï¿½ï¿½ï¿½ï¿½Ê¾Ã»ï¿½ï¿½È¨ï¿½ï¿½  
     		((HttpServletResponse)response).sendRedirect(redirectUrl);
     	}
 	}

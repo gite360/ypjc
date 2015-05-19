@@ -139,18 +139,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <table border="1" cellspacing="0" cellpadding="0" bordercolordark="#ffffff" bordercolorlight="#000000" height="185" >
   		<tr>
   		  <td>
-    	        <font size="4">请输入浸泡面积1：</font><input type="text" name="浸泡面积1" id="浸泡面积1" size = "3"/>
+    	        <font size="4">请输入浸泡面积1：</font><input type="text" name="浸泡面积1" id="浸泡面积1" size = "3" value = "100"/>
     	  </td>
     	  <td>
-    	        <font size="4">请输入浸泡面积2：</font><input type="text" name="浸泡面积2" id="浸泡面积2" size = "3"/>
+    	        <font size="4">请输入浸泡面积2：</font><input type="text" name="浸泡面积2" id="浸泡面积2" size = "3" value = "100"/>
     	  </td>
   		</tr>
   		<tr>
   		  <td>
-    	        <font size="4">请输入浸泡体积1：</font><input type="text" name="浸泡体积1" id="浸泡体积1" size = "3"/>
+    	        <font size="4">请输入浸泡体积1：</font><input type="text" name="浸泡体积1" id="浸泡体积1" size = "3" value = "200"/>
     	  </td>
     	  <td>
-    	        <font size="4">请输入浸泡体积2：</font><input type="text" name="浸泡体积2" id="浸泡体积2" size = "3"/>
+    	        <font size="4">请输入浸泡体积2：</font><input type="text" name="浸泡体积2" id="浸泡体积2" size = "3" value = "200"/>
     	  </td>
   		</tr>
   		<tr>
