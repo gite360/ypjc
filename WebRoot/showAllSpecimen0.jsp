@@ -3,6 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -75,21 +76,62 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <div class="container">
   	  <div align="center"> 
-      <img src="resources/TITLE.jpg" width="980" height="150"> 
+      <img src="img/TITLE.jpg" width="980" height="150"> 
     </div>
-    <hr>
+    <div class="sidebar1">
+  	<nav>
+    <ul>
+      <c:set var="permission1" value="<%=session.getAttribute(\"permission1\") %>" />
+      <c:set var="permission2" value="<%=session.getAttribute(\"permission2\") %>" />
+      <c:set var="permission3" value="<%=session.getAttribute(\"permission3\") %>" />
+      <c:set var="permission4" value="<%=session.getAttribute(\"permission4\") %>" />
+      <li><c:choose>
+      <c:when test="${permission1=='true'}"><a href='showAllSpecimen0.jsp'>检测项目分配</a></c:when>
+      <c:otherwise><label>检测项目分配</label></c:otherwise>
+      </c:choose></li>
+      <li>
+      <c:choose>
+      <c:when test="${permission2=='true'}"><a href='yangpinfenpei.jsp'>检测样品分配</a></c:when>
+      <c:otherwise><label>检测样品分配</label></c:otherwise>
+      </c:choose>
+	  </li>
+      <li>
+      <c:choose>
+      <c:when test="${permission3=='true'}"><a href='shengchengyuanshijilu.jsp'>生成原始记录</a></c:when>
+      <c:otherwise><label>生成原始记录</label></c:otherwise>
+      </c:choose>
+      </li>
+      <li>
+      <c:choose>
+      <c:when test="${permission4=='true'}"><a href='setinfo.jsp'>修改个人信息</a></c:when>
+      <c:otherwise><label>修改个人信息</label></c:otherwise>
+      </c:choose>
+	  </li>
+    </ul>
+    </nav>
+    </div>
+<div style="background:#B5DBFF;">
+	<table width='800px'>
+	<tr>
+	<td align="left">
+	&nbsp;
+	<input type="submit" value="后退" onclick="javascript:history.go(-1);"/>
+	&nbsp;
+	<input type="submit" value="前进" onclick="javascript:history.go(1);"/>
+	</td>
+	<td align="right">
     <form action="logout.action" method="post">
       <font size="4">欢迎进入样品检测系统，<%=session.getAttribute("username") %></font>
       <input type="submit" value="注销">
     </form>
-<hr>
-<div align="center">
-<br>
+    </td>
+    </tr>
+    </table>
+</div>
+<div align="center" style="background:#B5DBFF;width:980px">
    	<font size="6">检测项目分配</font>
-    <br>
   </div>
-  <hr>
-  <div id="result" align="center"></div>
+  <div id="result" align="center" style="background:#B5DBFF;min-height:600px"></div>
   </div>
   </body>
 </html>

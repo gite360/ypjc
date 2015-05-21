@@ -6,7 +6,8 @@ import org.apache.struts2.ServletActionContext;
 
 public class LoginAction {
 	private String username;
-	private String password;   
+	private String password;
+	private int flag;
     public String getUsername() {
 		return username;
 	}
@@ -19,39 +20,56 @@ public class LoginAction {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public int getFlag() {
+		return flag;
+	}
+	public void setFlag(int flag) {
+		this.flag = flag;
+	}
 	public String execute() {
-		//TODO ����ݿ��ѯ�����Լ�Ȩ��
+		// TODO
 		String databasePassword = "";
-		int permission = 1;
-		if(this.getUsername().equals("1")){
-			permission = 1;
-		}
-		if(this.getUsername().equals("2")){
-			permission = 2;
-		}
-		if(this.getUsername().equals("3")){
-			permission = 3;
-		}
-		HttpSession session = ServletActionContext. getRequest().getSession();
-		//������Ŀ����Ȩ��
-	    if(this.getPassword().equals(databasePassword) && permission == 1){
+		int permission = 1111;
+		// 项目分配权限
+		int permission1 = permission % 10;
+		// 样品分配权限
+		int permission2 = permission % 100 / 10;
+		// 生成原始记录权限
+		int permission3 = permission % 1000 / 100;
+		// 修改个人信息权限
+		int permission4 = permission % 10000 / 1000;
+		HttpSession session = ServletActionContext.getRequest().getSession();
+	    if(this.getPassword().equals(databasePassword)){
 			session.setAttribute("username",this.getUsername());
 			session.setAttribute("permission",permission);
-	        return "success1";
-	    }
-	    //��Ʒ����Ȩ��
-	    else if(this.getPassword().equals(databasePassword) && permission == 2){
-	    	session.setAttribute("username",this.getUsername());
-			session.setAttribute("permission",permission);
-	    	return "success2";
-	    }
-	    //���ԭʼ��¼Ȩ��
-	    else if(this.getPassword().equals(databasePassword) && permission == 3){
-	    	session.setAttribute("username",this.getUsername());
-			session.setAttribute("permission",permission);
-	    	return "success3";
-	    //��½ʧ��
+			if (permission1 == 1){
+				session.setAttribute("permission1","true");
+			}
+			if(permission2 == 1){
+				session.setAttribute("permission2","true");
+			}
+			if(permission3 == 1){
+				session.setAttribute("permission3","true");
+			}
+			if(permission4 == 1){
+				session.setAttribute("permission4","true");
+			}
+			if (permission1 == 1){
+				return "success1";
+			}
+			if(permission2 == 1){
+				return "success2";
+			}
+			if(permission3 == 1){
+				return "success3";
+			}
+			if(permission4 == 1){
+				return "success4";
+			}
+			this.setFlag(1);
+			return "fail";
 	    }else{
+	    	this.setFlag(1);
 	        return "fail";
 	    }
 	}

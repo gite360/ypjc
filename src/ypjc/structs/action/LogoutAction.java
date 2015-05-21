@@ -6,8 +6,7 @@ import org.apache.struts2.ServletActionContext;
 public class LogoutAction {
 	public String execute() {
 		HttpSession session = ServletActionContext.getRequest().getSession();
-		session.setAttribute("username",null);
-		session.setAttribute("permission",null);
+		session.invalidate();
 		return "success";
 	}
 }

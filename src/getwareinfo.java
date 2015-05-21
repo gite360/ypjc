@@ -26,6 +26,7 @@ public class getwareinfo extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String s= "{\"恒重1\":\"70\",\"恒重2\":\"60\",\"恒重样品1\":\"90\",\"恒重样品2\":\"100\"}";

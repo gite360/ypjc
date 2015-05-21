@@ -1,12 +1,8 @@
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.json.simple.JSONObject;
 
 
 public class getall extends HttpServlet {
@@ -21,6 +17,7 @@ public class getall extends HttpServlet {
 	 * @throws ServletException if an error occurred
 	 * @throws IOException if an error occurred
 	 */
+	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -32,7 +29,7 @@ public class getall extends HttpServlet {
 		jsonObject.put("检测内容2", "重金属");
 		jsonObject.put("检测内容3", "脱色试验");*/
 		/*return jsonObject.toString();*/
-		String s= "{\"检测内容ID0\":\"0\",\"检测内容0\":\"感官\",\"检测内容ID1\":\"1\",\"检测内容1\":\"脱色试验\",\"检测内容ID2\":\"2\",\"检测内容2\":\"感官\",\"检测内容ID3\":\"3\",\"检测内容3\":\"正己烷\"}";
+		String s= "{\"检测内容ID0\":\"0\",\"检测内容0\":\"蒸发残渣mg/L,65%乙醇,20℃,2h\",\"检测内容ID1\":\"1\",\"检测内容1\":\"蒸发残渣mg/L,4%乙酸,60℃,2h\",\"检测内容ID2\":\"2\",\"检测内容2\":\"感官\",\"检测内容ID3\":\"3\",\"检测内容3\":\"正己烷\"}";
 		
 		response.setCharacterEncoding("UTF-8"); 
 		response.setContentType("application/json;charset=UTF-8");

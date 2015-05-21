@@ -5,10 +5,11 @@
 	<package name="log" namespace="/" extends="struts-default">
 		<action name="login" class="ypjc.structs.action.LoginAction">
 			<result name="fail">/login.jsp</result>
-			
 			<result name="success1">/showAllSpecimen0.jsp</result>
 			<result name="success2">/yangpinfenpei.jsp</result>
-			<result name="success3">/shengchengyuanshijilu.jsp</result></action>
+			<result name="success3">/shengchengyuanshijilu.jsp</result>
+			<result name="success4">/setinfo.jsp</result>
+		</action>
 		<action name="logout" class="ypjc.structs.action.LogoutAction">
 			<result name="success">/login.jsp</result>
 		</action>

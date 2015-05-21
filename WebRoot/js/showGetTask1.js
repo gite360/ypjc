@@ -2,7 +2,7 @@
 $(document).ready(function(){
             /* var t = $("#endtime").val(); */
             /* var data = {"date":t}; */
-            alert("");
+            /*alert("");*/
             var data = null; 
             var count = 0;
             var temp;

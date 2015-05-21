@@ -3,7 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -93,80 +93,129 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         });
       
     </script>
+  <script> 
+function show_child(id) 
+{ 
+var value = window.showModalDialog("qiminbianhao.jsp","","dialogHeight=460px,dialogWidth=520px,toolbar=no,menubar=no,location=no");
+if (value!=null)
+{
+if(id == 1)
+{
+document.getElementById("器皿编号1").setAttribute("value", value);
+}
+if(id == 2)
+{
+document.getElementById("器皿编号2").setAttribute("value", value);
+}
+}
+} 
+</script> 
   </head>
   
   <!-- <body onload="biaozhunxiangmu2()"> -->
     <body>
     <div class="container">
-    <div align="center"> <img src="resources/TITLE.jpg" width="980" height="150"></div>
-    <hr>
+    <div align="center"> <img src="img/TITLE.jpg" width="980" height="150"></div>
+    <div class="sidebar1">
+  	<nav>
+    <ul>
+      <c:set var="permission1" value="<%=session.getAttribute(\"permission1\") %>" />
+      <c:set var="permission2" value="<%=session.getAttribute(\"permission2\") %>" />
+      <c:set var="permission3" value="<%=session.getAttribute(\"permission3\") %>" />
+      <c:set var="permission4" value="<%=session.getAttribute(\"permission4\") %>" />
+      <li><c:choose>
+      <c:when test="${permission1=='true'}"><a href='showAllSpecimen0.jsp'>检测项目分配</a></c:when>
+      <c:otherwise><label>检测项目分配</label></c:otherwise>
+      </c:choose></li>
+      <li>
+      <c:choose>
+      <c:when test="${permission2=='true'}"><a href='yangpinfenpei.jsp'>检测样品分配</a></c:when>
+      <c:otherwise><label>检测样品分配</label></c:otherwise>
+      </c:choose>
+	  </li>
+      <li>
+      <c:choose>
+      <c:when test="${permission3=='true'}"><a href='shengchengyuanshijilu.jsp'>生成原始记录</a></c:when>
+      <c:otherwise><label>生成原始记录</label></c:otherwise>
+      </c:choose>
+      </li>
+      <li>
+      <c:choose>
+      <c:when test="${permission4=='true'}"><a href='setinfo.jsp'>修改个人信息</a></c:when>
+      <c:otherwise><label>修改个人信息</label></c:otherwise>
+      </c:choose>
+	  </li>
+    </ul>
+    </nav>
+    </div>
+	<div style="background:#B5DBFF;">
+	<table width='800px'>
+	<tr>
+	<td align="left">
+	&nbsp;
+	<input type="submit" value="后退" onclick="javascript:history.go(-1);"/>
+	&nbsp;
+	<input type="submit" value="前进" onclick="javascript:history.go(1);"/>
+	</td>
+	<td align="right">
     <form action="logout.action" method="post">
-	<font size="4">欢迎进入样品检测系统，<%=session.getAttribute("username") %></font>
-	<input type="submit" value="注销">
-	</form>
-    <hr>
-    <div align="center">
+      <font size="4">欢迎进入样品检测系统，<%=session.getAttribute("username") %></font>
+      <input type="submit" value="注销">
+    </form>
+    </td>
+    </tr>
+    </table>
+	</div>
+    <div align="center" style="background:#B5DBFF;width:980px">
     <br>
     	<font size="6">设置检测条目的具体信息</font>
-        <br>
     </div>
-    <hr>
-    <div align="center">
-    <br>
+    <div align="center" style="background:#B5DBFF;width:980px">
     <font size="4">
     样品编号：<script>document.write(tmp3[1]);</script>
     &nbsp; &nbsp;
     检测内容：<script>document.write(tmp4[1]);</script>
     </font>
-    <br>
     </div>
-    <hr>
-    <div align="center">
-    <br>
+    <div align="center" style="background:#B5DBFF;width:980px">
     <font size="4">
     请输入样品数量：
     </font>
     <input type="text" name="样品数量" id="样品数量" size = "3"/>
     &nbsp; &nbsp;
     <button type="button">确认</button> 
-    &nbsp; &nbsp;
-    <input type="button" value="返回" onclick="javascript:history.go(-1);"/>
-    <br>
     </div>
-    <hr>
-    <div align="center">
-    <br>
-    <table border="1" cellspacing="0" cellpadding="0" bordercolordark="#ffffff" bordercolorlight="#000000" height="185" >
+    <div align="center" style="background:#B5DBFF;width:980px">
+    <table border="1" height="185" width="600">
   		<tr>
   		  <td>
-    	        <font size="4">请输入浸泡面积1：</font><input type="text" name="浸泡面积1" id="浸泡面积1" size = "3" value = "100"/>
+    	        <font size="4">请输入浸泡面积1：</font><input type="text" name="浸泡面积1" id="浸泡面积1" size = "3" value = "100"/>cm<sup>2</sup>
     	  </td>
     	  <td>
-    	        <font size="4">请输入浸泡面积2：</font><input type="text" name="浸泡面积2" id="浸泡面积2" size = "3" value = "100"/>
+    	        <font size="4">请输入浸泡面积2：</font><input type="text" name="浸泡面积2" id="浸泡面积2" size = "3" value = "100"/>cm<sup>2</sup>
     	  </td>
   		</tr>
   		<tr>
   		  <td>
-    	        <font size="4">请输入浸泡体积1：</font><input type="text" name="浸泡体积1" id="浸泡体积1" size = "3" value = "200"/>
+    	        <font size="4">请输入浸泡体积1：</font><input type="text" name="浸泡体积1" id="浸泡体积1" size = "3" value = "200"/>mL
     	  </td>
     	  <td>
-    	        <font size="4">请输入浸泡体积2：</font><input type="text" name="浸泡体积2" id="浸泡体积2" size = "3" value = "200"/>
+    	        <font size="4">请输入浸泡体积2：</font><input type="text" name="浸泡体积2" id="浸泡体积2" size = "3" value = "200"/>mL
     	  </td>
   		</tr>
   		<tr>
   		  <td>
     	        <font size="4">请输入器皿编号1：</font><input type="text" name="器皿编号1" id="器皿编号1" size = "3"/>
+    	        <input type="button" value="选择器皿" onclick="javascript:show_child(1);"/>
     	  </td>
     	  <td>
     	        <font size="4">请输入器皿编号2：</font><input type="text" name="器皿编号2" id="器皿编号2" size = "3"/>
+    	        <input type="button" value="选择器皿" onclick="javascript:show_child(2);"/>
     	  </td>
   		</tr>
   	</table>
-    <br>
     </div>
-    <hr>
-    <br>
-  	<div id="result" align="center"></div>
+  	<div id="result" align="center" style="background:#B5DBFF;min-height:600px"></div>
     </div>
 </body>
 </html>
