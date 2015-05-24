@@ -19,13 +19,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.1.3.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.query-2.1.7.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/getURLParameter.js"></script>
     <script type="text/javascript">
       var url=location.href;
       var tmp1=url.split("?")[1]; 
       var tmp2=tmp1.split("&");
       var tmp3 = tmp2[0].split("=");
       var tmp4 = tmp2[1].split("=");
-      var data = {"standard":tmp4[1]};
+      var data = {"standard":requestURLParameter("standard")};
       var count = 0;
       function jiancexiangmu(){
          $.ajax({
@@ -80,8 +82,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       
       
       $(document).ready(function(){
-    	  
-    	  
     	 /*  $("#checkAll").click(function() { //复选框全选/取消全选 
               if (this.checked) {  
                   $("input[name='001']:checkbox").each(function() { //遍历所有的name为selectFlag的 checkbox  
@@ -94,20 +94,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                           })  
               }  
           }) */
-    	  
-    	  
-    	  
-    	  
           $("button").click(function(){
           
             var t = $(":checkbox[name='001']:checked").map(function(){return $(this).val(); }).get();
-            var data = {"no":tmp3[1],"t":t};
-            /* alert(JSON.stringify(data)); */  
+            var dataSetTm = {"no":requestURLParameter("no"),"name":requestURLParameter("name"),"part":requestURLParameter("part"),"t":t};
+            alert(JSON.stringify(dataSetTm));  
             $.ajax({
               dataType:"json",
               type: "POST",
               url: "servlet/settm",
-              data: data,
+              data: dataSetTm,
               success: function(jsonObject){
                   /* var s = "<table border='1' width='500' height='100'>"; */
                  /*  alert(jsonObject.status); */
@@ -194,9 +190,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div align="center" style="background:#B5DBFF;width:980px">
     <br>
     	<font size="4">
-    	样品编号:<script>document.write(tmp3[1]);</script>
+    	样品编号:<script>document.write(requestURLParameter("no"));</script>
         &nbsp; &nbsp;
-        标准编号:<script>document.write(tmp4[1]);</script>
+                     部件名称:<script>document.write(requestURLParameter("part"));</script>
+        &nbsp; &nbsp;
+                      标准编号:<script>document.write(requestURLParameter("standard"));</script>
         &nbsp; &nbsp;
         </font>
     	<button type="button">确认</button>
